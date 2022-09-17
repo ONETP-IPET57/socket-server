@@ -20,6 +20,12 @@ io.on('connection', (socket) => {
   };
 
   socket.on('createdAlert', createdAlert);
+
+  const createdLocation = (msg) => {
+    socket.broadcast.emit('newIncomingLocation', msg);
+  };
+
+  socket.on('createdLocation', createdLocation);
 });
 
 server.listen(3000, () => {
